@@ -29,5 +29,11 @@ public class LoaiChiViewModel extends AndroidViewModel {
     public void insert(LoaiChi loaiChi){
         mLoaiChiRepository.insert(loaiChi);
     }
+    public void delete(LoaiChi loaiChi){
+        mLoaiChiRepository.detete(loaiChi);
+    }
+    public void update(LoaiChi loaiChi){
+        mLoaiChiRepository.update(loaiChi);
+    }
 
 }

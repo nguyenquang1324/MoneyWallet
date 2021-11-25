@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.moneywallet.R;
 import com.example.moneywallet.dialog.LoaiChiDialog;
+import com.example.moneywallet.dialog.LoaiThuDetailDialog;
 import com.example.moneywallet.dialog.LoaiThuDialog;
 import com.example.moneywallet.entity.LoaiThu;
 import com.example.moneywallet.ui.adapter.ItemClickListener;
@@ -47,6 +48,7 @@ public class LoaiThuFragment extends Fragment {
         return inflater.inflate(R.layout.loai_thu_fragment, container, false);
     }
 
+
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -64,6 +66,14 @@ public class LoaiThuFragment extends Fragment {
             }
         });
 
+        mAdapter.setOnItemViewClickListener(new ItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                LoaiThu loaiThu = mAdapter.getItem(position);
+                LoaiThuDetailDialog dialog = new LoaiThuDetailDialog(getActivity(),currentFragment,loaiThu);
+                dialog.show();
+            }
+        });
         ItemTouchHelper helper = new ItemTouchHelper(
                 new ItemTouchHelper.SimpleCallback(0,
                         ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT

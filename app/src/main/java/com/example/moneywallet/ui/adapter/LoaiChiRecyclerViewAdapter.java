@@ -24,8 +24,19 @@ public class LoaiChiRecyclerViewAdapter extends RecyclerView.Adapter<LoaiChiRecy
     private LayoutInflater mLayoutInflater;
     private List<LoaiChi> mlist;
 
+    public static ItemClickListener itemEditClickListener;
+    public static ItemClickListener itemViewClickListener;
+
     public LoaiChiRecyclerViewAdapter(Context context){
         mLayoutInflater = LayoutInflater.from(context);
+    }
+
+    public void setOnItemEditClickListener(ItemClickListener itemEditClickListener) {
+        LoaiChiRecyclerViewAdapter.itemEditClickListener = itemEditClickListener;
+    }
+
+    public void setOnItemViewClickListener(ItemClickListener itemViewClickListener) {
+        LoaiChiRecyclerViewAdapter.itemViewClickListener = itemViewClickListener;
     }
     public LoaiChiViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = mLayoutInflater.inflate(R.layout.recyclerview_loai_chi_item,parent,false);
@@ -38,6 +49,7 @@ public class LoaiChiRecyclerViewAdapter extends RecyclerView.Adapter<LoaiChiRecy
          if (mlist != null)
          {
           holder.tvNamelc.setText(mlist.get(position).ten1);
+          holder.position = position;
 
          }
     }
@@ -47,6 +59,12 @@ public class LoaiChiRecyclerViewAdapter extends RecyclerView.Adapter<LoaiChiRecy
         if(mlist == null)
         return 0;
         return mlist.size();
+    }
+    public LoaiChi getItem(int position){
+        if(mlist == null || position>=mlist.size()){
+            return null;
+        }
+        return mlist.get(position);
     }
 
     public void setList(List<LoaiChi> mlist) {
@@ -58,12 +76,29 @@ public class LoaiChiRecyclerViewAdapter extends RecyclerView.Adapter<LoaiChiRecy
         public TextView tvNamelc;
         public ImageView ivViewlc ,ivEditlc;
         public CardView cv;
+        public int position;
         public LoaiChiViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             tvNamelc = itemView.findViewById(R.id.tvNamelc);
             ivViewlc = itemView.findViewById(R.id.ivViewlc);
             ivEditlc = itemView.findViewById(R.id.ivEditlc);
             cv = (CardView) itemView;
+            ivViewlc.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(itemViewClickListener!=null){
+                        itemViewClickListener.onItemClick(position);
+                    }
+                }
+            });
+            ivEditlc.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(itemEditClickListener != null){
+                        itemEditClickListener.onItemClick(position);
+                    }
+                }
+            });
         }
     }
 }

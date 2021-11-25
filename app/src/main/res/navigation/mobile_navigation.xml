@@ -25,12 +25,12 @@
     <fragment
         android:id="@+id/nav_chi"
         android:name="com.example.moneywallet.ui.chi.ChiFragment"
-        android:label="fragment_chi"
+        android:label="Khoản Chi"
         tools:layout="@layout/fragment_chi" />
     <fragment
         android:id="@+id/nav_thu"
         android:name="com.example.moneywallet.ui.thu.ThuFragment"
-        android:label="fragment_thu"
+        android:label="Khoản Thu"
         tools:layout="@layout/fragment_thu" />
     <fragment
         android:id="@+id/nav_gioithieu"
@@ -46,4 +46,9 @@
         android:id="@+id/nav_thoat"
         android:name="com.example.moneywallet.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/nav_no"
+        android:name="com.example.moneywallet.ui.no.NoFragment"
+        android:label="Khoản nợ"
+        tools:layout="@layout/fragment_no" />
 </navigation>

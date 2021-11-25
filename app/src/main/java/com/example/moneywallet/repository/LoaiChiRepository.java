@@ -25,8 +25,15 @@ public class LoaiChiRepository {
     public void insert(LoaiChi loaiChi){
         new InsertAsyncTask(mLoaiChiDao).execute(loaiChi);
     }
+    public void detete(LoaiChi loaiChi){
+        new DeleteAsyncTask(mLoaiChiDao).execute(loaiChi);
+    }
+    public void update(LoaiChi loaiChi){
+        new UpdateAsyncTask(mLoaiChiDao).execute(loaiChi);
+    }
 
-     class InsertAsyncTask extends AsyncTask<LoaiChi,Void,Void>{
+
+    class InsertAsyncTask extends AsyncTask<LoaiChi,Void,Void>{
         private LoaiChiDao mLoaiChiDao;
         public InsertAsyncTask(LoaiChiDao loaiChiDao){
             this.mLoaiChiDao = loaiChiDao;
@@ -38,4 +45,28 @@ public class LoaiChiRepository {
              return null;
          }
      }
+    class DeleteAsyncTask extends AsyncTask<LoaiChi,Void,Void>{
+        private LoaiChiDao mLoaiChiDao;
+        public DeleteAsyncTask(LoaiChiDao loaiChiDao){
+            this.mLoaiChiDao = loaiChiDao;
+        }
+
+        @Override
+        protected Void doInBackground(LoaiChi... loaiChis) {
+            mLoaiChiDao.delete(loaiChis[0]);
+            return null;
+        }
+    }
+    class UpdateAsyncTask extends AsyncTask<LoaiChi,Void,Void>{
+        private LoaiChiDao mLoaiChiDao;
+        public UpdateAsyncTask(LoaiChiDao loaiChiDao){
+            this.mLoaiChiDao = loaiChiDao;
+        }
+
+        @Override
+        protected Void doInBackground(LoaiChi... loaiChis) {
+            mLoaiChiDao.update(loaiChis[0]);
+            return null;
+        }
+    }
 }

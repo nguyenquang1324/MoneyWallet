@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import com.example.moneywallet.R;
 import com.example.moneywallet.entity.LoaiThu;
-import com.example.moneywallet.ui.adapter.LoaiThuRecyclerviewAdapter;
 import com.example.moneywallet.ui.thu.LoaiThuFragment;
 import com.example.moneywallet.ui.thu.LoaiThuViewModel;
 import com.google.android.material.textfield.TextInputEditText;
@@ -18,7 +17,6 @@ public class LoaiThuDialog {
     private LoaiThuViewModel mViewModel;
     private LayoutInflater mLayoutInflater;
     private AlertDialog mDialog;
-
     private TextInputEditText etID,etName;
     private boolean mEditMode;
 

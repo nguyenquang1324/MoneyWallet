@@ -4,9 +4,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.moneywallet.dialog.ChiDialog;
 import com.example.moneywallet.dialog.LoaiChiDialog;
 import com.example.moneywallet.dialog.LoaiThuDialog;
+import com.example.moneywallet.dialog.NguoiNoDialog;
+import com.example.moneywallet.dialog.NoDialog;
+import com.example.moneywallet.dialog.ThuDialog;
+import com.example.moneywallet.ui.chi.KhoanChiFragment;
 import com.example.moneywallet.ui.chi.LoaiChiFragment;
+import com.example.moneywallet.ui.no.KhoanNoFragment;
+import com.example.moneywallet.ui.no.NguoinoFragment;
+import com.example.moneywallet.ui.thu.KhoanThuFragment;
 import com.example.moneywallet.ui.thu.LoaiThuFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -51,10 +59,26 @@ public class MainActivity extends AppCompatActivity {
                     LoaiThuDialog dialog = new LoaiThuDialog(currentContext, (LoaiThuFragment) fragment);
                     dialog.show();
                 }
+                else if(fragment instanceof KhoanThuFragment){
+                    ThuDialog dialog = new ThuDialog(currentContext,(KhoanThuFragment) fragment);
+                    dialog.show();
+
+                }
                 if(fragment instanceof LoaiChiFragment) {
                     LoaiChiDialog dialog = new LoaiChiDialog(currentContext, (LoaiChiFragment) fragment);
                     dialog.show();
+                }else if(fragment instanceof KhoanChiFragment){
+                    ChiDialog dialog = new ChiDialog(currentContext,(KhoanChiFragment) fragment);
+                    dialog.show();
                 }
+                if(fragment instanceof NguoinoFragment) {
+                    NguoiNoDialog dialog = new NguoiNoDialog(currentContext, (NguoinoFragment) fragment);
+                    dialog.show();
+                }else if(fragment instanceof KhoanNoFragment){
+                    NoDialog dialog = new NoDialog(currentContext,(KhoanNoFragment) fragment);
+                    dialog.show();
+                }
+
             }
         });
         DrawerLayout drawer = binding.drawerLayout;

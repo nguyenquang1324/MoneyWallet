@@ -35,7 +35,8 @@
             android:layout_marginRight="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_menu_camera" />
+            app:srcCompat="@drawable/ic_sort_black_24dp"
+            tools:ignore="VectorDrawableCompat" />
 
         <ImageView
             android:id="@+id/ivEdit"
@@ -46,6 +47,7 @@
             android:layout_marginRight="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_menu_gallery" />
+            app:srcCompat="@drawable/ic_mode_edit_black_24dp"
+            tools:ignore="VectorDrawableCompat" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
